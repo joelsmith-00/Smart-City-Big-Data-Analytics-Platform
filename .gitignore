@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Hadoop, Spark, and generated data
+*.csv
+*.parquet
+logs/
+*.log
+hdfs/*
+!hdfs/.gitkeep
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Keep the data directory placeholder while excluding generated artifacts
+data/*
+!data/.gitkeep
