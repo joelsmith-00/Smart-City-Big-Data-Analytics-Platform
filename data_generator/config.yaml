@@ -1,0 +1,25 @@
+zones:
+  - name: Central
+    lat: 40.7128
+    lon: -74.0060
+  - name: North
+    lat: 40.7306
+    lon: -73.9352
+  - name: South
+    lat: 40.6772
+    lon: -73.9442
+  - name: East
+    lat: 40.7411
+    lon: -73.9897
+  - name: West
+    lat: 40.8831
+    lon: -73.9951
+  - name: Industrial
+    lat: 40.6562
+    lon: -73.9321
+start_date: 2023-01-01
+end_date: 2024-12-31
+seed: 42
+rows_per_zone_per_day: 24
+anomaly_rate: 0.005
+missing_rate: 0.01
