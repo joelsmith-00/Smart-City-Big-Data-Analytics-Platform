@@ -19,6 +19,7 @@ import {
 } from 'lucide-react'
 import { useState } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
+import { GlobalFilters } from './GlobalFilters'
 
 const navigation = [
   { label: 'Overview', to: '/', icon: LayoutDashboard },
@@ -157,6 +158,7 @@ export function AppLayout() {
         </header>
 
         <main className="relative mx-auto max-w-[1600px] px-4 py-6 sm:px-6 sm:py-8">
+          <GlobalFilters />
           <motion.div
             key={location.pathname}
             initial={{ opacity: 0, y: 10 }}

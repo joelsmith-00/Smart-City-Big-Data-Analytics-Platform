@@ -1,23 +1,23 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { AppLayout } from './components/AppLayout'
-import {
-  AirQualityPage,
-  AlertsPage,
-  CityMapPage,
-  EmergencyPage,
-  EnergyPage,
-  OverviewPage,
-  PipelinePage,
-  PredictionsPage,
-  TrafficPage,
-  WeatherPage,
-} from './pages/DashboardPages'
+import { FilterProvider } from './components/FilterContext'
 import { RouteGuard } from './components/RouteGuard'
+import { AirQualityPage } from './pages/AirQuality'
+import { AlertsPage } from './pages/Alerts'
+import { CityMapPage } from './pages/CityMap'
+import { EmergencyPage } from './pages/Emergency'
+import { EnergyPage } from './pages/Energy'
+import { OverviewPage } from './pages/Overview'
+import { PipelinePage } from './pages/Pipeline'
+import { PredictionsPage } from './pages/Predictions'
+import { TrafficPage } from './pages/Traffic'
+import { WeatherPage } from './pages/Weather'
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
+    <FilterProvider>
+      <BrowserRouter>
+        <Routes>
         <Route element={<AppLayout />}>
           <Route index element={<RouteGuard routeName="Overview"><OverviewPage /></RouteGuard>} />
           <Route path="traffic" element={<RouteGuard routeName="Traffic"><TrafficPage /></RouteGuard>} />
@@ -32,7 +32,8 @@ function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+      </BrowserRouter>
+    </FilterProvider>
   )
 }
 
