@@ -12,4 +12,18 @@ export default defineConfig({
       '@': path.resolve(currentDirectory, './src'),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+          router: ['react-router-dom'],
+          charts: ['recharts', 'd3-scale', 'd3-shape', 'd3-array'],
+          map: ['leaflet', 'react-leaflet'],
+          motion: ['framer-motion'],
+          icons: ['lucide-react'],
+        },
+      },
+    },
+  },
 })

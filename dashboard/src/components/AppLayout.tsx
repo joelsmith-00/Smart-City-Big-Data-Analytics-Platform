@@ -17,7 +17,7 @@ import {
   X,
   Zap,
 } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { GlobalFilters } from './GlobalFilters'
 
@@ -42,6 +42,14 @@ export function AppLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [collapsed, setCollapsed] = useState(false)
   const location = useLocation()
+
+  useEffect(() => {
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setSidebarOpen(false)
+    }
+    window.addEventListener('keydown', closeOnEscape)
+    return () => window.removeEventListener('keydown', closeOnEscape)
+  }, [])
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-ink text-slate-100">
@@ -126,7 +134,7 @@ export function AppLayout() {
           <div className="flex items-center gap-3">
             <button
               type="button"
-              className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 text-slate-300 lg:hidden"
+              className="focus-ring grid h-10 w-10 place-items-center rounded-xl border border-white/10 text-slate-300 lg:hidden"
               onClick={() => setSidebarOpen(true)}
               aria-label="Open navigation"
             >
@@ -141,16 +149,16 @@ export function AppLayout() {
             <button
               type="button"
               onClick={() => setCollapsed((value) => !value)}
-              className="hidden h-10 w-10 place-items-center rounded-xl border border-white/10 text-slate-400 transition hover:border-sky/30 hover:text-sky lg:grid"
+              className="focus-ring hidden h-10 w-10 place-items-center rounded-xl border border-white/10 text-slate-400 transition hover:border-sky/30 hover:text-sky lg:grid"
               aria-label="Toggle sidebar"
             >
               <ChevronLeft className={`h-4 w-4 transition ${collapsed ? 'rotate-180' : ''}`} />
             </button>
-            <button type="button" className="relative grid h-10 w-10 place-items-center rounded-xl border border-white/10 text-slate-400 transition hover:text-white" aria-label="Notifications">
+            <button type="button" className="focus-ring relative grid h-10 w-10 place-items-center rounded-xl border border-white/10 text-slate-400 transition hover:text-white" aria-label="Notifications">
               <Bell className="h-4 w-4" />
               <span className="absolute right-2 top-2 h-1.5 w-1.5 rounded-full bg-coral" />
             </button>
-            <button type="button" className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/[.03] p-1.5 pr-3 text-xs transition hover:border-white/20">
+            <button type="button" className="focus-ring flex items-center gap-2 rounded-xl border border-white/10 bg-white/[.03] p-1.5 pr-3 text-xs transition hover:border-white/20">
               <span className="grid h-7 w-7 place-items-center rounded-lg bg-gradient-to-br from-sky to-violet text-ink"><Gauge className="h-4 w-4" /></span>
               <span className="hidden sm:inline">Urban Analyst</span>
             </button>
@@ -174,7 +182,7 @@ export function AppLayout() {
       <button
         type="button"
         onClick={() => setSidebarOpen(false)}
-        className="fixed bottom-5 right-5 z-40 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-white/5 text-slate-300 shadow-xl lg:hidden"
+        className="focus-ring fixed bottom-5 right-5 z-40 grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-white/5 text-slate-300 shadow-xl lg:hidden"
         aria-label="Close navigation"
       >
         <X className="h-4 w-4" />
