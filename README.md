@@ -80,11 +80,13 @@ python -m pytest data_generator/tests/test_generate.py -q
 
 - [x] Stage 1 — Synthetic Data Generation and Project Foundation
 - [x] Stage 2 — Interactive Mock Dashboard, Data Views, Predictions, Alerts, Pipeline, and Performance Polish
-- [ ] Stage 3 — Apache Hadoop HDFS Storage
-- [ ] Stage 4 — Apache Hadoop MapReduce Processing
-- [ ] Stage 5 — Apache Pig and Apache Hive Analytics
-- [ ] Stage 6 — Apache Spark and MongoDB Integration
-- [ ] Stage 7 — API and Dashboard Delivery
+- [ ] Stage 3 — Apache Hadoop HDFS Storage and MapReduce Processing
+- [ ] Stage 4 — Apache Pig and Apache Hive Analytics
+- [ ] Stage 5 — Apache Spark and MongoDB Integration
+- [ ] Stage 6 — API and Dashboard Delivery
+- [ ] Stage 7 — Operational Validation and Final Delivery
+
+See [docs/stage3-hadoop.md](docs/stage3-hadoop.md) for the Hadoop ingestion, MapReduce, and verification workflow.
 
 
 ## Screenshots
