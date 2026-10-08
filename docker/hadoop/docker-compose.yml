@@ -1,0 +1,66 @@
+services:
+  namenode:
+    image: smartcity-hadoop:local
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: namenode
+    container_name: namenode
+    command: ["hadoop", "namenode"]
+    ports:
+      - "9870:9870"
+      - "8020:8020"
+    volumes:
+      - hadoop-namenode:/hadoop/name
+      - ../../data:/data:ro
+      - ../../mapreduce:/mapreduce:ro
+      - ./conf:/etc/hadoop:ro
+    environment:
+      HADOOP_CONF_DIR: /etc/hadoop
+    depends_on:
+      - datanode
+
+  datanode:
+    image: smartcity-hadoop:local
+    hostname: datanode
+    command: ["hadoop", "datanode"]
+    volumes:
+      - hadoop-datanode:/hadoop/data
+      - ./conf:/etc/hadoop:ro
+    environment:
+      HADOOP_CONF_DIR: /etc/hadoop
+
+  resourcemanager:
+    image: smartcity-hadoop:local
+    hostname: resourcemanager
+    command: ["yarn", "resourcemanager"]
+    ports:
+      - "8088:8088"
+    volumes:
+      - ./conf:/etc/hadoop:ro
+    environment:
+      HADOOP_CONF_DIR: /etc/hadoop
+
+  nodemanager:
+    image: smartcity-hadoop:local
+    hostname: nodemanager
+    command: ["yarn", "nodemanager"]
+    volumes:
+      - ./conf:/etc/hadoop:ro
+    environment:
+      HADOOP_CONF_DIR: /etc/hadoop
+
+  historyserver:
+    image: smartcity-hadoop:local
+    hostname: historyserver
+    command: ["yarn", "historyserver"]
+    volumes:
+      - hadoop-history:/hadoop/history
+      - ./conf:/etc/hadoop:ro
+    environment:
+      HADOOP_CONF_DIR: /etc/hadoop
+
+volumes:
+  hadoop-namenode:
+  hadoop-datanode:
+  hadoop-history:
