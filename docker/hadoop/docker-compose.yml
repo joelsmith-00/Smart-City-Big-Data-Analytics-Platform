@@ -13,6 +13,7 @@ services:
     volumes:
       - hadoop-namenode:/hadoop/name
       - ../../data:/data:ro
+      - ../../hdfs:/hdfs:ro
       - ../../mapreduce:/mapreduce:ro
       - ./conf:/etc/hadoop:ro
     environment:

@@ -15,4 +15,5 @@ hadoop fs -put -f "$ROOT_DIR/data/weather.csv" "$HADOOP_INPUT/weather.csv"
 
 python "$ROOT_DIR/mapreduce/verify.py" \
   --job1-output "$HADOOP_OUTPUT/job1_avg_traffic" \
+  --job2-output "$HADOOP_OUTPUT/job2_peak_hour" \
   --job3-output "$HADOOP_OUTPUT/job3_temp_stats"
